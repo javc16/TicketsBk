@@ -21,9 +21,9 @@ namespace TicketsBk.Features.Estados
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<EstadoTicket>> GetAll()
+        public async Task<ActionResult<IEnumerable<EstadoTicket>>> GetAll()
         {
-            var result = _estadoTicketAppService.GetAll();
+            var result = await _estadoTicketAppService.GetAll();
             return Ok(result);
         }
 

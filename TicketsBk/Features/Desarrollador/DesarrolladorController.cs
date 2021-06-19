@@ -21,9 +21,9 @@ namespace TicketsBk.Features.Proyectos
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<Desarrollador>> GetAll()
+        public async Task<ActionResult<IEnumerable<Desarrollador>>> GetAll()
         {
-            var result = _desarrolladorAppService.GetAll();
+            var result = await _desarrolladorAppService.GetAll();
             return Ok(result);
         }
 

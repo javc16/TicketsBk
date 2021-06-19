@@ -21,9 +21,9 @@ namespace TicketsBk.Features.Tickets
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<TicketDTO>> GetAll()
+        public async Task<ActionResult<IEnumerable<TicketDTO>>> GetAll()
         {
-            var result = _ticketAppService.GetAll();
+            var result = await  _ticketAppService.GetAll();
             return Ok(result);
         }
 

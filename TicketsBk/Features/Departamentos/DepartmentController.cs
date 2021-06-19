@@ -21,7 +21,7 @@ namespace TicketsBk.Features.Departamentos
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<Departamento>> GetAll()
+        public async Task<ActionResult<IEnumerable<Departamento>>> GetAll()
         {
             var result = _departamentoAppService.GetAll();
             return Ok(result);
