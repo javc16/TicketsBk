@@ -15,10 +15,10 @@ namespace TicketsBk.Context
     {
         public MyContext(DbContextOptions<MyContext> options) : base(options)
         { }
+
         public DbSet<Proyecto> Proyecto { get; set; }
         public DbSet<Desarrollador> Desarrollador { get; set; }
         public DbSet<ProductOwner> ProductOwner { get; set; }
-
         public DbSet<Departamento> Departamento { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<EstadoTicket> EstadoTicket { get; set; }
