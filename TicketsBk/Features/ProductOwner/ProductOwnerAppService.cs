@@ -24,9 +24,9 @@ namespace TicketsBk.Features.Proyectos
             return productOwners;
         }
 
-        public async Task<Response> GetById(string nombre)
+        public async Task<Response> GetById(int id)
         {
-            var productOwner = await _context.ProductOwner.Include(e => e.Proyectos).FirstOrDefaultAsync(r => r.Nombre == nombre);
+            var productOwner = await _context.ProductOwner.Include(e => e.Proyectos).FirstOrDefaultAsync(r => r.Id == id);
             if (productOwner == null)
             {
                 return new Response { Mensaje = "Este Product Owner no existe" };
