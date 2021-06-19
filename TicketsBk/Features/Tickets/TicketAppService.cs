@@ -43,7 +43,7 @@ namespace TicketsBk.Features.Tickets
             {
                 return new Response { Mensaje = "Este Ticket ya existe en el sistema" };
             }
-            var ticket = TicketDTO.DeDTOAModelo(ticketDTO;
+            var ticket = TicketDTO.DeDTOAModelo(ticketDTO);
             _context.Ticket.Add(ticket);
             await _context.SaveChangesAsync();
             return new Response { Mensaje = "Ticket guardado correctamente" };
