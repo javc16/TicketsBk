@@ -26,7 +26,7 @@ namespace TicketsBk.Features.Proyectos
 
         public async Task<Response> GetById(string nombre)
         {
-            var productOwner = await _context.ProductOwner.FirstOrDefaultAsync(r => r.Nombre == nombre);
+            var productOwner = await _context.ProductOwner.Include(e => e.Proyectos).FirstOrDefaultAsync(r => r.Nombre == nombre);
             if (productOwner == null)
             {
                 return new Response { Mensaje = "Este Product Owner no existe" };
@@ -36,7 +36,7 @@ namespace TicketsBk.Features.Proyectos
 
         public async Task<Response> Post(ProductOwner productOwner)
         {
-            var guardarProductOwner = await _context.ProductOwner.FirstOrDefaultAsync(r => r.Nombre == productOwner.Nombre);
+            var guardarProductOwner = await _context.ProductOwner.Include(e => e.Proyectos).FirstOrDefaultAsync(r => r.Nombre == productOwner.Nombre);
             if (guardarProductOwner != null)
             {
                 return new Response { Mensaje = "Este Product Owner ya existe en el sistema" };

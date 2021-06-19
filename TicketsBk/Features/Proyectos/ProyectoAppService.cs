@@ -20,14 +20,14 @@ namespace TicketsBk.Features.Proyectos
 
         public IEnumerable<ProyectoDTO> GetAll()
         {
-            var proyecto = _context.Proyecto.Include(e => e.ProductOwner).Where(x => x.Estado == Constantes.Activo);
+            var proyecto = _context.Proyecto.Include(e => e.ProductOwner).Include(e => e.DesarrolladoresResponsables).Where(x => x.Estado == Constantes.Activo);
             var proyectoDTO = ProyectoDTO.DeModeloADTO(proyecto);
             return proyectoDTO;
         }
 
         public async Task<Response> GetById(string nombreProyecto)
         {
-            var articulo = await _context.Proyecto.FirstOrDefaultAsync(r => r.NombreProyecto == nombreProyecto);
+            var articulo = await _context.Proyecto.Include(e => e.ProductOwner).Include(e => e.DesarrolladoresResponsables).FirstOrDefaultAsync(r => r.NombreProyecto == nombreProyecto);
             if (articulo == null)
             {
                 return new Response { Mensaje = "Este proyecto no existe" };

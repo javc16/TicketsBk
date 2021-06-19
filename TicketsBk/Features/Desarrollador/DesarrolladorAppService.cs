@@ -20,13 +20,13 @@ namespace TicketsBk.Features.Proyectos
 
         public async Task<IEnumerable<Desarrollador>> GetAll()
         {
-            var desarrollador = await _context.Desarrollador.ToListAsync();
+            var desarrollador = await _context.Desarrollador.Include(e => e.Proyecto).ToListAsync();
             return desarrollador;
         }
 
         public async Task<Response> GetById(string nombre)
         {
-            var desarrollador = await _context.Desarrollador.FirstOrDefaultAsync(r => r.Nombre == nombre);
+            var desarrollador = await _context.Desarrollador.Include(e => e.Proyecto).FirstOrDefaultAsync(r => r.Nombre == nombre);
             if (desarrollador == null)
             {
                 return new Response { Mensaje = "Este Desarrollador no existe" };

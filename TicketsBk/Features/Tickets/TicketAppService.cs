@@ -20,14 +20,14 @@ namespace TicketsBk.Features.Tickets
 
         public async Task<IEnumerable<TicketDTO>> GetAll()
         {
-            var ticket = await _context.Ticket.ToListAsync();
+            var ticket = await _context.Ticket.Include(e => e.Departamento).Include(e => e.Categoria).Include(e => e.Desarrollador).Include(e => e.EstadoTicket).ToListAsync();
             var ticketDTO = TicketDTO.DeModeloADTO(ticket);
             return ticketDTO;
         }
 
         public async Task<Response> GetById(long id)
         {
-            var ticket = await _context.Ticket.FirstOrDefaultAsync(r => r.Id == id);
+            var ticket = await _context.Ticket.Include(e => e.Departamento).Include(e => e.Categoria).Include(e => e.Desarrollador).Include(e => e.EstadoTicket).FirstOrDefaultAsync(r => r.Id == id);
             if (ticket == null)
             {
                 return new Response { Mensaje = "Este Ticket no existe" };
