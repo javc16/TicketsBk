@@ -28,7 +28,7 @@ namespace TicketsBk.Features.Proyectos
         }
 
 
-        [HttpGet("{nombre}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Response>> GetById(int id)
         {
             return Ok(await _productOwnerAppService.GetById(id));
