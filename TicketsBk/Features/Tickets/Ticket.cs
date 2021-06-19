@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TicketsBk.Features.Categorias;
 using TicketsBk.Features.Departamentos;
+using TicketsBk.Features.Estados;
 using TicketsBk.Features.Proyectos;
 using TicketsBk.Helpers;
 
@@ -22,6 +23,7 @@ namespace TicketsBk.Features.Tickets
         public Departamento Departamento { get; set; }
         public Categoria Categoria { get; set; }
         public Desarrollador Desarrollador { get; set; }
+        public EstadoTicket EstadoTicket { get; set; }
 
         public sealed class Builder
         {
