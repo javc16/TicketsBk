@@ -13,6 +13,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TicketsBk.Context;
+using TicketsBk.Features.Categorias;
+using TicketsBk.Features.Departamentos;
+using TicketsBk.Features.Estados;
+using TicketsBk.Features.ProductOwner;
 using TicketsBk.Features.Proyectos;
 using TicketsBk.Features.Tickets;
 
@@ -56,6 +60,15 @@ namespace TicketsBk
 
             services.AddScoped<ProyectoAppService>();
             services.AddScoped<TicketAppService>();
+            services.AddScoped<ProductOwnerAppService>();
+            services.AddScoped<EstadoTicketAppService>();
+            services.AddScoped<DesarrolladorAppService>();
+            services.AddScoped<DepartamentoAppService>();
+            services.AddScoped<CategoriaAppService>();
+
+
+
+
 
         }
 

@@ -25,9 +25,9 @@ namespace TicketsBk.Features.Proyectos
             return proyectoDTO;
         }
 
-        public async Task<Response> GetById(long id)
+        public async Task<Response> GetById(string nombreProyecto)
         {
-            var articulo = await _context.Proyecto.FirstOrDefaultAsync(r => r.Id == id);
+            var articulo = await _context.Proyecto.FirstOrDefaultAsync(r => r.NombreProyecto == nombreProyecto);
             if (articulo == null)
             {
                 return new Response { Mensaje = "Este proyecto no existe" };
@@ -36,21 +36,22 @@ namespace TicketsBk.Features.Proyectos
             return new Response { Datos = data };
         }
 
-        public async Task<Response> PostProyecto(Proyecto proyecto)
+        public async Task<Response> PostProyecto(ProyectoDTO proyectoDTO)
         {
-            var guardarProyecto = await _context.Proyecto.FirstOrDefaultAsync(r => r.NombreProyecto == proyecto.NombreProyecto);
+            var guardarProyecto = await _context.Proyecto.FirstOrDefaultAsync(r => r.NombreProyecto == proyectoDTO.NombreProyecto);
             if (guardarProyecto != null)
             {
                 return new Response { Mensaje = "Este proyecto ya existe en el sistema" };
             }
-
+            var proyecto = ProyectoDTO.DeDTOAModelo(proyectoDTO);
             _context.Proyecto.Add(proyecto);
             await _context.SaveChangesAsync();
             return new Response { Mensaje = "Proyecto guardado correctamente" };
         }
 
-        public async Task<Response> PutProyecto(Proyecto proyecto)
+        public async Task<Response> PutProyecto(ProyectoDTO proyectoDTO)
         {
+            var proyecto = ProyectoDTO.DeDTOAModelo(proyectoDTO);
             _context.Entry(proyecto).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return new Response { Mensaje = $"Proyecto {proyecto.NombreProyecto} modificado correctamente" };
@@ -58,7 +59,7 @@ namespace TicketsBk.Features.Proyectos
 
         public async Task<Response> DeleteProyecto(int id)
         {
-            var proyecto = await _context.Proyecto.FindAsync(id);
+            var proyecto = await _context.Proyecto.FirstOrDefaultAsync(x=>x.Id==id);
             if (proyecto == null)
             {
                 return new Response { Mensaje = $"No tenemos un proyecto con ese id" }; ;

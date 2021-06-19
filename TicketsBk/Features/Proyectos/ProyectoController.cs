@@ -28,25 +28,25 @@ namespace TicketsBk.Features.Proyectos
         }
 
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Response>> GetById(long id)
+        [HttpGet("{nombreProyecto}")]
+        public async Task<ActionResult<Response>> GetById(string nombreProyecto)
         {
-            return Ok(await _proyectoAppService.GetById(id));
+            return Ok(await _proyectoAppService.GetById(nombreProyecto));
         }
 
         [HttpPost]
-        public async Task<ActionResult<Response>> Post(Proyecto item)
+        public async Task<ActionResult<Response>> Post(ProyectoDTO item)
         {
             return Ok(await _proyectoAppService.PostProyecto(item));
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<Response>> PutProyecto(Proyecto item)
+        [HttpPut]
+        public async Task<ActionResult<Response>> PutProyecto(ProyectoDTO item)
         {
             return Ok(await _proyectoAppService.PutProyecto(item));
         }
 
-        [HttpDelete("{id}")]
+        [HttpPut("{id}")]
         public async Task<ActionResult<Response>> DeleteById(int id)
         {
             return Ok(await _proyectoAppService.DeleteProyecto(id));
