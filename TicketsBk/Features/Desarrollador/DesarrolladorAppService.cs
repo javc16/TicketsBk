@@ -20,38 +20,51 @@ namespace TicketsBk.Features.Proyectos
 
         public async Task<IEnumerable<Desarrollador>> GetAll()
         {
-            var estadoTicket = await _context.Desarrollador.ToListAsync();
-            return estadoTicket;
+            var desarrollador = await _context.Desarrollador.ToListAsync();
+            return desarrollador;
         }
 
         public async Task<Response> GetById(string nombre)
         {
-            var estadoTicket = await _context.Desarrollador.FirstOrDefaultAsync(r => r.Nombre == nombre);
-            if (estadoTicket == null)
+            var desarrollador = await _context.Desarrollador.FirstOrDefaultAsync(r => r.Nombre == nombre);
+            if (desarrollador == null)
             {
                 return new Response { Mensaje = "Este Desarrollador no existe" };
             }
-            return new Response { Datos = estadoTicket };
+            return new Response { Datos = desarrollador };
         }
 
         public async Task<Response> Post(Desarrollador desarrollador)
         {
-            var guardarEstadoTicket = await _context.Desarrollador.FirstOrDefaultAsync(r => r.Nombre == desarrollador.Nombre);
-            if (guardarEstadoTicket != null)
+            var guardarDesarrollador = await _context.Desarrollador.FirstOrDefaultAsync(r => r.Nombre == desarrollador.Nombre);
+            if (guardarDesarrollador != null)
             {
                 return new Response { Mensaje = "Este desarrollador ya existe en el sistema" };
             }
 
-            _context.Desarrollador.Add(guardarEstadoTicket);
+            _context.Desarrollador.Add(guardarDesarrollador);
             await _context.SaveChangesAsync();
             return new Response { Mensaje = "Estado de Ticket guardado correctamente" };
         }
 
-        public async Task<Response> Put(EstadoTicket estadoTicket)
+        public async Task<Response> Put(Desarrollador desarrollador)
         {
-            _context.Entry(estadoTicket).State = EntityState.Modified;
+            _context.Entry(desarrollador).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-            return new Response { Mensaje = $"Estado de Ticket {estadoTicket.Nombre} modificado correctamente" };
+            return new Response { Mensaje = $"Desarrollador {desarrollador.Nombre} modificado correctamente" };
+        }
+
+        public async Task<Response> Delete(int id)
+        {
+            var desarrollador = await _context.Desarrollador.FirstOrDefaultAsync(x => x.Id == id);
+            if (desarrollador == null)
+            {
+                return new Response { Mensaje = $"No tenemos un Desarrollador con ese id" }; ;
+            }
+            desarrollador.Estado = 0;
+            _context.Entry(desarrollador).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return new Response { Mensaje = $"Desarrollador {desarrollador.Nombre} eliminado correctamente" };
         }
     }
 }
