@@ -14,9 +14,9 @@ namespace TicketsBk.Features.Proyectos
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public int IdProductOwner { get; set; }
-        public Usuario ProductOwner { get; set; }
+        public ProductOwner ProductOwner { get; set; }
         public List<Desarrollador> DesarrolladoresResponsables { get; set; }
-        public List<Usuario> UsuariosInvolucrados { get; set; }
+        public List<ProductOwner> UsuariosInvolucrados { get; set; }
         public int Estado { get; set; }
 
         public static ProyectoDTO DeModeloADTO(Proyecto proyecto)
@@ -34,7 +34,7 @@ namespace TicketsBk.Features.Proyectos
                 IdProductOwner = proyecto.IdProductOwner,
                 ProductOwner = proyecto.ProductOwner,
                 DesarrolladoresResponsables = proyecto.DesarrolladoresResponsables,
-                UsuariosInvolucrados = proyecto.usuariosInvolucrados,
+                //UsuariosInvolucrados = proyecto.usuariosInvolucrados,
                 Estado = proyecto.Estado
             } : null;
         }

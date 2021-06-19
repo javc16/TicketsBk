@@ -11,8 +11,9 @@ namespace TicketsBk.Features.Proyectos
         public string Nombre { get; set; }
         public int CodigoEmpleado { get; set; }
         public DateTime FechaCreacion { get; set; }
+        public int IdProyecto { get; set; }
+        public Proyecto Proyecto { get; set; }
 
-        public List<Proyecto> Proyectos { get; set; }
 
     }
 }

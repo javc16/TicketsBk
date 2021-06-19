@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TicketsBk.Context;
+using TicketsBk.Features.Proyectos;
 
 namespace TicketsBk
 {
@@ -28,12 +29,23 @@ namespace TicketsBk
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            //services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            //{
+            //    builder.AllowAnyOrigin()
+            //           .AllowAnyMethod()
+            //           .AllowAnyHeader();
+            //}));
+
+            services.AddCors(options =>
             {
-                builder.AllowAnyOrigin()
-                       .AllowAnyMethod()
-                       .AllowAnyHeader();
-            }));
+                options.AddPolicy(name: "CorsPolicy",
+                                builder =>
+                                {
+                                    builder.AllowAnyOrigin()
+                                            .AllowAnyMethod()
+                                            .AllowAnyHeader();
+                                });
+            });
 
             services.AddDbContext<MyContext>(
             options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
@@ -47,6 +59,8 @@ namespace TicketsBk
             services.AddControllersWithViews()
             .AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddScoped<ProyectoAppService>();
 
         }
 
@@ -63,6 +77,7 @@ namespace TicketsBk
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors("CorsPolicy");
 
             app.UseAuthorization();
 

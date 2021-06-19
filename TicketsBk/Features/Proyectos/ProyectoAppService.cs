@@ -20,7 +20,7 @@ namespace TicketsBk.Features.Proyectos
 
         public IEnumerable<ProyectoDTO> GetAll()
         {
-            var proyecto = _context.Proyecto.Where(x => x.Estado == Constantes.Activo);
+            var proyecto = _context.Proyecto.Include(e => e.ProductOwner).Where(x => x.Estado == Constantes.Activo);
             var proyectoDTO = ProyectoDTO.DeModeloADTO(proyecto);
             return proyectoDTO;
         }

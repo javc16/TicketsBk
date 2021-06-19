@@ -16,16 +16,16 @@ namespace TicketsBk.Features.Proyectos
         public DateTime FechaFin { get; set; }
         public DateTime FechaCreacion { get; set; }
         public int IdProductOwner { get; set; }
-        public Usuario ProductOwner { get; set; }
+        public ProductOwner ProductOwner { get; set; }
         public List<Desarrollador> DesarrolladoresResponsables { get; set; }
-        public List<Usuario> usuariosInvolucrados { get; set; }
+ 
         public int Estado { get; set; }
 
         public sealed class Builder
         {
             private readonly Proyecto _proyecto;
 
-            public Builder(string nombreProyecto,string estadoDelProyecto,DateTime fechaInicio,DateTime fechaFin,Usuario productOwner)
+            public Builder(string nombreProyecto,string estadoDelProyecto,DateTime fechaInicio,DateTime fechaFin,ProductOwner productOwner)
             {
                 _proyecto = new Proyecto
                 {
