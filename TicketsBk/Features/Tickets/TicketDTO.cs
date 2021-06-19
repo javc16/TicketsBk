@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TicketsBk.Features.Categorias;
 using TicketsBk.Features.Departamentos;
+using TicketsBk.Features.Estados;
 using TicketsBk.Features.Proyectos;
 
 namespace TicketsBk.Features.Tickets
@@ -22,6 +23,7 @@ namespace TicketsBk.Features.Tickets
         public Departamento Departamento { get; set; }
         public Categoria Categoria { get; set; }
         public Desarrollador Desarrollador { get; set; }
+        public EstadoTicket EstadoTicket { get; set; }
 
         public static TicketDTO DeModeloADTO(Ticket ticket)
         {
@@ -40,6 +42,7 @@ namespace TicketsBk.Features.Tickets
                 Departamento = ticket.Departamento,
                 Categoria = ticket.Categoria,
                 Desarrollador = ticket.Desarrollador,
+                EstadoTicket = ticket.EstadoTicket
             } : null;
         }
 
@@ -62,7 +65,7 @@ namespace TicketsBk.Features.Tickets
         public static Ticket DeDTOAModelo(TicketDTO ticketDTO)
         {
             return ticketDTO != null ? new Ticket.Builder(ticketDTO.Nombre,ticketDTO.DescripcionIncidente,ticketDTO.DescripcionSolucion,ticketDTO.FechaInicial,
-                ticketDTO.FechaFinal,ticketDTO.DiasTranscurridos,ticketDTO.Departamento,ticketDTO.Categoria,ticketDTO.Desarrollador).Construir() : null;
+                ticketDTO.FechaFinal,ticketDTO.DiasTranscurridos,ticketDTO.Departamento,ticketDTO.Categoria,ticketDTO.Desarrollador,ticketDTO.EstadoTicket).Construir() : null;
         }
     }
 }

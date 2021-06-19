@@ -30,7 +30,7 @@ namespace TicketsBk.Features.Tickets
             private readonly Ticket _ticket;
 
             public Builder(string nombre, string descripcionIncidente, string descripcionSolucion, DateTime fechaInicio, 
-                DateTime fechaFin, int diasTranscurridos, Departamento departamento, Categoria categoria, Desarrollador desarrollador)
+                DateTime fechaFin, int diasTranscurridos, Departamento departamento, Categoria categoria, Desarrollador desarrollador,EstadoTicket estadoTicket)
             {
                 _ticket = new Ticket
                 {
@@ -44,6 +44,7 @@ namespace TicketsBk.Features.Tickets
                     Departamento = departamento,
                     Categoria = categoria,
                     Desarrollador= desarrollador,
+                    EstadoTicket = estadoTicket
                 };
             }
 
