@@ -41,8 +41,8 @@ namespace TicketsBk.Features.Proyectos
             {
                 return new Response { Mensaje = "Este Product Owner ya existe en el sistema" };
             }
-
-            _context.ProductOwner.Add(guardarProductOwner);
+            productOwner.FechaCreacion = DateTime.Now;
+            _context.ProductOwner.Add(productOwner);
             await _context.SaveChangesAsync();
             return new Response { Mensaje = "Product Owner guardado correctamente" };
         }

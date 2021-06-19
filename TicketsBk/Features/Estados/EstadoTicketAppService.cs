@@ -42,7 +42,7 @@ namespace TicketsBk.Features.Estados
                 return new Response { Mensaje = "Este Estado de Ticket ya existe en el sistema" };
             }
 
-            _context.EstadoTicket.Add(guardarEstadoTicket);
+            _context.EstadoTicket.Add(estadoTicket);
             await _context.SaveChangesAsync();
             return new Response { Mensaje = "Estado de Ticket guardado correctamente" };
         }
