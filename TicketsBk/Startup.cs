@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TicketsBk.Context;
 using TicketsBk.Features.Proyectos;
+using TicketsBk.Features.Tickets;
 
 namespace TicketsBk
 {
@@ -29,13 +30,6 @@ namespace TicketsBk
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
-            //{
-            //    builder.AllowAnyOrigin()
-            //           .AllowAnyMethod()
-            //           .AllowAnyHeader();
-            //}));
-
             services.AddCors(options =>
             {
                 options.AddPolicy(name: "CorsPolicy",
@@ -61,6 +55,7 @@ namespace TicketsBk
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddScoped<ProyectoAppService>();
+            services.AddScoped<TicketAppService>();
 
         }
 

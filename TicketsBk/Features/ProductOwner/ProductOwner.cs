@@ -14,6 +14,5 @@ namespace TicketsBk.Features.Proyectos
         public DateTime FechaCreacion { get; set; }
         public List<Proyecto> Proyectos { get; set; }
 
-
     }
 }

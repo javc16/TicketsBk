@@ -7,6 +7,7 @@ namespace TicketsBk.Features.Proyectos
 {
     public class DesarrolladorProyecto
     {
+        //Esta no va ya
         public int Id { get; set; }
         public int IdDesarrollador { get; set; }
         public int IdProyecto { get; set; }

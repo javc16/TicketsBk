@@ -7,6 +7,7 @@ using TicketsBk.Features.Proyectos;
 using TicketsBk.Features.Departamentos;
 using TicketsBk.Features.Categorias;
 using TicketsBk.Features.Estados;
+using TicketsBk.Features.Tickets;
 
 namespace TicketsBk.Context
 {
@@ -20,7 +21,9 @@ namespace TicketsBk.Context
 
         public DbSet<Departamento> Departamento { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
-        public DbSet<Estado> Estado { get; set; }
+        public DbSet<EstadoTicket> EstadoTicket { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
+
 
 
 
