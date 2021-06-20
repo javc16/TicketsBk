@@ -41,7 +41,7 @@ namespace TicketsBk.Features.Proyectos
             {
                 return new Response { Mensaje = "Este desarrollador ya existe en el sistema" };
             }
-
+            desarrollador.Estado = 1;
             _context.Desarrollador.Add(desarrollador);
             await _context.SaveChangesAsync();
             return new Response { Mensaje = "Estado de Ticket guardado correctamente" };

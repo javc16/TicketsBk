@@ -41,7 +41,7 @@ namespace TicketsBk.Features.Departamentos
             {
                 return new Response { Mensaje = "Este desarrollador ya existe en el sistema" };
             }
-
+            departamento.Estado = 1;
             _context.Departamento.Add(departamento);
             await _context.SaveChangesAsync();
             return new Response { Mensaje = "Departamento guardado correctamente" };
