@@ -42,7 +42,7 @@ namespace TicketsBk.Features.Categorias
                 return new Response { Mensaje = "Este categoria ya existe en el sistema" };
             }
 
-            _context.Categoria.Add(guardarCategoria);
+            _context.Categoria.Add(categoria);
             await _context.SaveChangesAsync();
             return new Response { Mensaje = "Categoria guardada correctamente" };
         }
