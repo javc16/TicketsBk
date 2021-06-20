@@ -24,11 +24,12 @@ namespace TicketsBk.Features.Tickets
         public Categoria Categoria { get; set; }
         public Desarrollador Desarrollador { get; set; }
         public EstadoTicket EstadoTicket { get; set; }
-
+        public int IdDepartamento { get; set; }
+        public int IdCategoria { get; set; }
+        public int IdDesarrollador { get; set; }
+        public int IdEstadoTicket { get; set; }
         public static TicketDTO DeModeloADTO(Ticket ticket)
         {
-
-
             return ticket != null ? new TicketDTO
             {
                 Id=ticket.Id,
@@ -42,7 +43,11 @@ namespace TicketsBk.Features.Tickets
                 Departamento = ticket.Departamento,
                 Categoria = ticket.Categoria,
                 Desarrollador = ticket.Desarrollador,
-                EstadoTicket = ticket.EstadoTicket
+                EstadoTicket = ticket.EstadoTicket,
+                IdDepartamento = ticket.IdDepartamento,
+                IdCategoria = ticket.IdCategoria,
+                IdDesarrollador = ticket.IdDesarrollador,
+                IdEstadoTicket = ticket.IdEstadoTicket
             } : null;
         }
 
@@ -65,7 +70,8 @@ namespace TicketsBk.Features.Tickets
         public static Ticket DeDTOAModelo(TicketDTO ticketDTO)
         {
             return ticketDTO != null ? new Ticket.Builder(ticketDTO.Nombre,ticketDTO.DescripcionIncidente,ticketDTO.DescripcionSolucion,ticketDTO.FechaInicial,
-                ticketDTO.FechaFinal,ticketDTO.DiasTranscurridos,ticketDTO.Departamento,ticketDTO.Categoria,ticketDTO.Desarrollador,ticketDTO.EstadoTicket).Construir() : null;
+                ticketDTO.FechaFinal,ticketDTO.DiasTranscurridos,ticketDTO.Departamento,ticketDTO.Categoria,ticketDTO.Desarrollador,ticketDTO.EstadoTicket,
+                ticketDTO.IdDepartamento,ticketDTO.IdCategoria,ticketDTO.IdDesarrollador,ticketDTO.IdEstadoTicket).Construir() : null;
         }
     }
 }

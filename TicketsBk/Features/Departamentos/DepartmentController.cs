@@ -23,7 +23,7 @@ namespace TicketsBk.Features.Departamentos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Departamento>>> GetAll()
         {
-            var result = _departamentoAppService.GetAll();
+            var result = await _departamentoAppService.GetAll();
             return Ok(result);
         }
 

@@ -20,6 +20,10 @@ namespace TicketsBk.Features.Tickets
         public DateTime FechaInicial { get; set; }
         public DateTime FechaFinal { get; set; }
         public int DiasTranscurridos { get; set; }
+        public int IdDepartamento { get; set; }
+        public int IdCategoria { get; set; }
+        public int IdDesarrollador { get; set; }
+        public int IdEstadoTicket { get; set; }
         public Departamento Departamento { get; set; }
         public Categoria Categoria { get; set; }
         public Desarrollador Desarrollador { get; set; }
@@ -30,7 +34,8 @@ namespace TicketsBk.Features.Tickets
             private readonly Ticket _ticket;
 
             public Builder(string nombre, string descripcionIncidente, string descripcionSolucion, DateTime fechaInicio, 
-                DateTime fechaFin, int diasTranscurridos, Departamento departamento, Categoria categoria, Desarrollador desarrollador,EstadoTicket estadoTicket)
+                DateTime fechaFin, int diasTranscurridos, Departamento departamento, Categoria categoria, Desarrollador desarrollador,EstadoTicket estadoTicket
+                ,int idDepartamento,int idCategoria,int idDesarrollador,int idEstadoTicket)
             {
                 _ticket = new Ticket
                 {
@@ -44,7 +49,11 @@ namespace TicketsBk.Features.Tickets
                     Departamento = departamento,
                     Categoria = categoria,
                     Desarrollador= desarrollador,
-                    EstadoTicket = estadoTicket
+                    EstadoTicket = estadoTicket,
+                    IdCategoria =idCategoria,
+                    IdDepartamento = idDepartamento,
+                    IdDesarrollador =idDesarrollador,
+                    IdEstadoTicket =idEstadoTicket
                 };
             }
 
