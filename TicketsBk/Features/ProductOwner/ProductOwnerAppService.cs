@@ -29,7 +29,7 @@ namespace TicketsBk.Features.Proyectos
             var productOwner = await _context.ProductOwner.Include(e => e.Proyectos).FirstOrDefaultAsync(r => r.Id == id);
             if (productOwner == null)
             {
-                
+                return new ProductOwner();
             }
             return productOwner;
         }

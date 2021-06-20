@@ -24,14 +24,14 @@ namespace TicketsBk.Features.Proyectos
             return desarrollador;
         }
 
-        public async Task<Response> GetById(string nombre)
+        public async Task<Desarrollador> GetById(int id)
         {
-            var desarrollador = await _context.Desarrollador.Include(e => e.Proyecto).FirstOrDefaultAsync(r => r.Nombre == nombre);
+            var desarrollador = await _context.Desarrollador.Include(e => e.Proyecto).FirstOrDefaultAsync(r => r.Id == id);
             if (desarrollador == null)
             {
-                return new Response { Mensaje = "Este Desarrollador no existe" };
+                return new Desarrollador();
             }
-            return new Response { Datos = desarrollador };
+            return desarrollador;
         }
 
         public async Task<Response> Post(Desarrollador desarrollador)

@@ -24,14 +24,14 @@ namespace TicketsBk.Features.Categorias
             return categoria;
         }
 
-        public async Task<Response> GetById(string nombre)
+        public async Task<Categoria> GetById(int id)
         {
-            var categoria = await _context.Categoria.FirstOrDefaultAsync(r => r.Nombre == nombre);
+            var categoria = await _context.Categoria.FirstOrDefaultAsync(r => r.Id == id);
             if (categoria == null)
             {
-                return new Response { Mensaje = "Este categoria no existe" };
+                return new Categoria();
             }
-            return new Response { Datos = categoria };
+            return categoria;
         }
 
         public async Task<Response> Post(Categoria categoria)

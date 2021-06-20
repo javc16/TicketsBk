@@ -25,15 +25,15 @@ namespace TicketsBk.Features.Proyectos
             return proyectoDTO;
         }
 
-        public async Task<Response> GetById(string nombreProyecto)
+        public async Task<ProyectoDTO> GetById(int id)
         {
-            var articulo = await _context.Proyecto.Include(e => e.ProductOwner).Include(e => e.DesarrolladoresResponsables).FirstOrDefaultAsync(r => r.NombreProyecto == nombreProyecto);
+            var articulo = await _context.Proyecto.Include(e => e.ProductOwner).Include(e => e.DesarrolladoresResponsables).FirstOrDefaultAsync(r => r.Id == id);
             if (articulo == null)
             {
-                return new Response { Mensaje = "Este proyecto no existe" };
+                return new ProyectoDTO();
             }
             var data = ProyectoDTO.DeModeloADTO(articulo);
-            return new Response { Datos = data };
+            return data;
         }
 
         public async Task<Response> PostProyecto(ProyectoDTO proyectoDTO)

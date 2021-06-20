@@ -28,10 +28,10 @@ namespace TicketsBk.Features.Categorias
         }
 
 
-        [HttpGet("{nombre}")]
-        public async Task<ActionResult<Response>> GetById(string nombre)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Categoria>> GetById(int id)
         {
-            return Ok(await _categoriaAppService.GetById(nombre));
+            return Ok(await _categoriaAppService.GetById(id));
         }
 
         [HttpPost]

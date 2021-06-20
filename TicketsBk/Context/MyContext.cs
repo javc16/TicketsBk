@@ -33,7 +33,9 @@ namespace TicketsBk.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
-            optionBuilder.UseSqlServer(@"Server=DESKTOP-AICR3S2;Database=HelpDesk;User Id=sa;Password=1234");
+           // optionBuilder.UseSqlServer(@"Server=DESKTOP-AICR3S2;Database=HelpDesk;User Id=sa;Password=1234");
+            optionBuilder.UseSqlServer(@"Server=database-1.cwyafa0gf6ea.us-east-1.rds.amazonaws.com,1433;Database=HelpDesk;User Id=admin;Password=hola1234");
+            //@"Server=database-1.cwyafa0gf6ea.us-east-1.rds.amazonaws.com,1433;Database=citizen;User Id=admin;Password=hola1234"
         }
     }
 }

@@ -28,10 +28,10 @@ namespace TicketsBk.Features.Estados
         }
 
 
-        [HttpGet("{nombre}")]
-        public async Task<ActionResult<Response>> GetById(string nombre)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<EstadoTicket>> GetById(int id)
         {
-            return Ok(await _estadoTicketAppService.GetById(nombre));
+            return Ok(await _estadoTicketAppService.GetById(id));
         }
 
         [HttpPost]

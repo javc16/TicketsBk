@@ -28,10 +28,10 @@ namespace TicketsBk.Features.Departamentos
         }
 
 
-        [HttpGet("{nombre}")]
-        public async Task<ActionResult<Response>> GetById(string nombre)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Departamento>> GetById(int id)
         {
-            return Ok(await _departamentoAppService.GetById(nombre));
+            return Ok(await _departamentoAppService.GetById(id));
         }
 
         [HttpPost]

@@ -24,14 +24,14 @@ namespace TicketsBk.Features.Departamentos
             return departamento;
         }
 
-        public async Task<Response> GetById(string nombre)
+        public async Task<Departamento> GetById(int id)
         {
-            var departamento = await _context.Departamento.FirstOrDefaultAsync(r => r.Nombre == nombre);
+            var departamento = await _context.Departamento.FirstOrDefaultAsync(r => r.Id == id);
             if (departamento == null)
             {
-                return new Response { Mensaje = "Este Departamento no existe" };
+                return new Departamento();
             }
-            return new Response { Datos = departamento };
+            return departamento;
         }
 
         public async Task<Response> Post(Departamento departamento)

@@ -24,14 +24,14 @@ namespace TicketsBk.Features.Estados
             return estadoTicket;
         }
 
-        public async Task<Response> GetById(string nombre)
+        public async Task<EstadoTicket> GetById(int id)
         {
-            var estadoTicket = await _context.EstadoTicket.FirstOrDefaultAsync(r => r.Nombre == nombre);
+            var estadoTicket = await _context.EstadoTicket.FirstOrDefaultAsync(r => r.Id == id);
             if (estadoTicket == null)
             {
-                return new Response { Mensaje = "Este Estado de Ticket no existe" };
+                return new EstadoTicket();
             }
-            return new Response { Datos = estadoTicket };
+            return estadoTicket;
         }
 
         public async Task<Response> Post(EstadoTicket estadoTicket)
