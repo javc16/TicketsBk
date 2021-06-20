@@ -16,8 +16,7 @@ namespace TicketsBk.Features.Proyectos
         public DateTime FechaFin { get; set; }
         public DateTime FechaCreacion { get; set; }
         public int IdProductOwner { get; set; }
-        public ProductOwner ProductOwner { get; set; }
-        public List<Desarrollador> DesarrolladoresResponsables { get; set; } 
+        public ProductOwner ProductOwner { get; set; }    
         public int Estado { get; set; }
 
         public sealed class Builder

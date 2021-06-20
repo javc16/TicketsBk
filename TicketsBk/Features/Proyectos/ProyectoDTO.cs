@@ -33,7 +33,7 @@ namespace TicketsBk.Features.Proyectos
                 FechaFin = proyecto.FechaFin,
                 IdProductOwner = proyecto.IdProductOwner,
                 ProductOwner = proyecto.ProductOwner,
-                DesarrolladoresResponsables = proyecto.DesarrolladoresResponsables,
+                //DesarrolladoresResponsables = proyecto.DesarrolladoresResponsables,
                 //UsuariosInvolucrados = proyecto.usuariosInvolucrados,
                 Estado = proyecto.Estado
             } : null;

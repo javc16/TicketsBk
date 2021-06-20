@@ -20,14 +20,14 @@ namespace TicketsBk.Features.Proyectos
 
         public IEnumerable<ProyectoDTO> GetAll()
         {
-            var proyecto = _context.Proyecto.Include(e => e.ProductOwner).Include(e => e.DesarrolladoresResponsables).Where(x => x.Estado == Constantes.Activo);
+            var proyecto = _context.Proyecto.Include(e => e.ProductOwner).Where(x => x.Estado == Constantes.Activo);
             var proyectoDTO = ProyectoDTO.DeModeloADTO(proyecto);
             return proyectoDTO;
         }
 
         public async Task<ProyectoDTO> GetById(int id)
         {
-            var articulo = await _context.Proyecto.Include(e => e.ProductOwner).Include(e => e.DesarrolladoresResponsables).FirstOrDefaultAsync(r => r.Id == id);
+            var articulo = await _context.Proyecto.Include(e => e.ProductOwner).FirstOrDefaultAsync(r => r.Id == id);
             if (articulo == null)
             {
                 return new ProyectoDTO();

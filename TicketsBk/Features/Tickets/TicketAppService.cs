@@ -44,6 +44,11 @@ namespace TicketsBk.Features.Tickets
                 return new Response { Mensaje = "Este Ticket ya existe en el sistema" };
             }
             var ticket = TicketDTO.DeDTOAModelo(ticketDTO);
+
+            ticket.Categoria = _context.Categoria.FirstOrDefault(x => x.Id == ticket.IdCategoria);
+            ticket.Departamento = _context.Departamento.FirstOrDefault(x => x.Id == ticket.IdDepartamento);
+            ticket.Desarrollador = _context.Desarrollador.FirstOrDefault(x => x.Id == ticket.IdDesarrollador);
+            ticket.EstadoTicket = _context.EstadoTicket.FirstOrDefault(x => x.Id == ticket.IdEstadoTicket);
             _context.Ticket.Add(ticket);
             await _context.SaveChangesAsync();
             return new Response { Mensaje = "Ticket guardado correctamente" };
