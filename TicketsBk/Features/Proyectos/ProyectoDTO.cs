@@ -57,7 +57,7 @@ namespace TicketsBk.Features.Proyectos
 
         public static Proyecto DeDTOAModelo(ProyectoDTO proyectoDTO)
         {
-            return proyectoDTO != null ? new Proyecto.Builder(proyectoDTO.NombreProyecto,proyectoDTO.EstadoDelProyecto,proyectoDTO.FechaInicio,proyectoDTO.FechaFin,proyectoDTO.ProductOwner).Construir() : null;
+            return proyectoDTO != null ? new Proyecto.Builder(proyectoDTO.NombreProyecto,proyectoDTO.EstadoDelProyecto,proyectoDTO.FechaInicio,proyectoDTO.FechaFin,proyectoDTO.ProductOwner, proyectoDTO.DescripcionProyecto, proyectoDTO.IdProductOwner).Construir() : null;
         }
     }
 }

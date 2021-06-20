@@ -44,6 +44,7 @@ namespace TicketsBk.Features.Proyectos
                 return new Response { Mensaje = "Este proyecto ya existe en el sistema" };
             }
             var proyecto = ProyectoDTO.DeDTOAModelo(proyectoDTO);
+            proyecto.ProductOwner = _context.ProductOwner.FirstOrDefault(x => x.Id == proyecto.IdProductOwner);
             _context.Proyecto.Add(proyecto);
             await _context.SaveChangesAsync();
             return new Response { Mensaje = "Proyecto guardado correctamente" };

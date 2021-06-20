@@ -33,7 +33,7 @@ namespace TicketsBk.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
-            optionBuilder.UseSqlServer(@"Server=DESKTOP-AICR3S2;Database=HelpDesk;User Id=sa;Password=1234");
+            optionBuilder.UseSqlServer(@"Server=ARAX;Database=HelpDesk;Trusted_Connection=True;");
         }
     }
 }

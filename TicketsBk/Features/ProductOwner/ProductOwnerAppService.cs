@@ -24,14 +24,14 @@ namespace TicketsBk.Features.Proyectos
             return productOwners;
         }
 
-        public async Task<Response> GetById(int id)
+        public async Task<ProductOwner> GetById(int id)
         {
             var productOwner = await _context.ProductOwner.Include(e => e.Proyectos).FirstOrDefaultAsync(r => r.Id == id);
             if (productOwner == null)
             {
-                return new Response { Mensaje = "Este Product Owner no existe" };
+                
             }
-            return new Response { Datos = productOwner };
+            return productOwner;
         }
 
         public async Task<Response> Post(ProductOwner productOwner)

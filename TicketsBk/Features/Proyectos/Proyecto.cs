@@ -24,15 +24,17 @@ namespace TicketsBk.Features.Proyectos
         {
             private readonly Proyecto _proyecto;
 
-            public Builder(string nombreProyecto,string estadoDelProyecto,DateTime fechaInicio,DateTime fechaFin,ProductOwner productOwner)
+            public Builder(string nombreProyecto,string estadoDelProyecto,DateTime fechaInicio,DateTime fechaFin,ProductOwner productOwner, string descripcionProyecto, int idProductOwner)
             {
                 _proyecto = new Proyecto
                 {
                     NombreProyecto = nombreProyecto,
+                    DescripcionProyecto = descripcionProyecto,
                     EstadoDelProyecto = estadoDelProyecto,
                     FechaInicio = fechaInicio,
                     FechaFin = fechaFin,
                     ProductOwner = productOwner,
+                    IdProductOwner = idProductOwner,
                     FechaCreacion = DateTime.Now,
                     Estado = Constantes.Activo
                 };
