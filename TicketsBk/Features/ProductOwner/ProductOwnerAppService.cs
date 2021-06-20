@@ -18,9 +18,9 @@ namespace TicketsBk.Features.Proyectos
 
         }
 
-        public async Task<IEnumerable<ProductOwner>> GetAll()
+        public IEnumerable<ProductOwner> GetAll()
         {
-            var productOwners = await _context.ProductOwner.ToListAsync();
+            var productOwners = _context.ProductOwner.Where(x=>x.Estado==Constantes.Activo);
             return productOwners;
         }
 

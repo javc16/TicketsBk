@@ -21,9 +21,9 @@ namespace TicketsBk.Features.Proyectos
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductOwner>>> GetAll()
+        public  ActionResult<IEnumerable<ProductOwner>> GetAll()
         {
-            var result = await _productOwnerAppService.GetAll();
+            var result =  _productOwnerAppService.GetAll();
             return Ok(result);
         }
 
@@ -47,7 +47,7 @@ namespace TicketsBk.Features.Proyectos
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Response>> DeleteById(int id)
+        public async Task<ActionResult<Response>> DeleteById(int id, ProductOwner data)
         {
             return Ok(await _productOwnerAppService.Delete(id));
         }

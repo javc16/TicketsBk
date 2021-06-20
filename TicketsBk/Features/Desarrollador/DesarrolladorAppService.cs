@@ -18,9 +18,9 @@ namespace TicketsBk.Features.Proyectos
 
         }
 
-        public async Task<IEnumerable<Desarrollador>> GetAll()
+        public IEnumerable<Desarrollador> GetAll()
         {
-            var desarrollador = await _context.Desarrollador.Include(e => e.Proyecto).ToListAsync();
+            var desarrollador =  _context.Desarrollador.Include(e => e.Proyecto).Where(x=>x.Estado==Constantes.Activo);
             return desarrollador;
         }
 

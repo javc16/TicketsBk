@@ -21,9 +21,9 @@ namespace TicketsBk.Features.Categorias
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Categoria>>> GetAll()
+        public  ActionResult<IEnumerable<Categoria>> GetAll()
         {
-            var result = await _categoriaAppService.GetAll();
+            var result = _categoriaAppService.GetAll();
             return Ok(result);
         }
 

@@ -18,9 +18,9 @@ namespace TicketsBk.Features.Categorias
 
         }
 
-        public async Task<IEnumerable<Categoria>> GetAll()
+        public IEnumerable<Categoria> GetAll()
         {
-            var categoria = await _context.Categoria.ToListAsync();
+            var categoria = _context.Categoria.Where(x=>x.Estado==Constantes.Activo);
             return categoria;
         }
 
@@ -59,7 +59,7 @@ namespace TicketsBk.Features.Categorias
             var categoria = await _context.Categoria.FirstOrDefaultAsync(x => x.Id == id);
             if (categoria == null)
             {
-                return new Response { Mensaje = $"No tenemos un departamento con ese id" }; ;
+                return new Response { Mensaje = $"No tenemos un departamento con ese id" };
             }
             categoria.Estado = 0;
             _context.Entry(categoria).State = EntityState.Modified;

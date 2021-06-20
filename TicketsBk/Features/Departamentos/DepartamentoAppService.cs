@@ -18,9 +18,9 @@ namespace TicketsBk.Features.Departamentos
 
         }
 
-        public async Task<IEnumerable<Departamento>> GetAll()
+        public IEnumerable<Departamento> GetAll()
         {
-            var departamento = await _context.Departamento.ToListAsync();
+            var departamento =  _context.Departamento.Where(x=>x.Estado ==Constantes.Activo);
             return departamento;
         }
 
