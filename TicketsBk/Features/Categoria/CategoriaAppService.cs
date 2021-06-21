@@ -42,6 +42,7 @@ namespace TicketsBk.Features.Categorias
                 return new Response { Mensaje = "Este categoria ya existe en el sistema" };
             }
 
+            categoria.Estado = 1;
             _context.Categoria.Add(categoria);
             await _context.SaveChangesAsync();
             return new Response { Mensaje = "Categoria guardada correctamente" };
